@@ -117,6 +117,12 @@ class frac{
 		if(obj.numer == numer and obj.denom == denom) return true;
         else return false;
     }
+    bool operator==(double const& obj)
+    {
+        double x = ((double)numer)/denom;
+		if(x == obj) return true;
+        else return false;
+    }
     bool operator!=(frac const& obj)
     {
 		if(obj.numer == numer and obj.denom == denom) return false;
@@ -195,18 +201,17 @@ double pow(double x,frac y){
     return pow(pow(x,y.numer),float(1)/y.denom);
 }
 
+frac pow(frac x,ll y){
+    frac res;
+    res.numer = pow(x.numer,y);
+    res.denom = pow(x.denom,y);
+    return res;
+}
+
 int main(){
-	frac a(5,3),b(2,5);
-	frac c = a+b;
-	cout << c << "\n";
-	c = a*b;
-	cout << c << "\n";
-	c = a-b;
-	cout << c << "\n";
-	c = a/b;
-	cout << c << "\n";
-	cout << c-- << "\n";
-	cout << --c << "\n";
-	cout << ++c << "\n";
-	cout << c++ << "\n";
+    frac s1(1,3); // Initialises a fraction 1/3
+    s1 = pow(s1,5);
+    double s3 = 1.0/243;
+    cout << (s1 == s3) << "\n"; // Should output true
+
 }
