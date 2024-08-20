@@ -1,6 +1,7 @@
 
 #include <bits/stdc++.h>
 #include <iostream>
+#include <vector>
 #define ll long long
 #define ld long double
 #define pll pair<ll,ll>
@@ -345,7 +346,6 @@ class rnum{
         }
         return res;
     }
-   
     rnum operator+(rnum const& x){
         rnum res = x;
         fa(i,terms){
@@ -360,6 +360,7 @@ class rnum{
         }
         return res;
     }
+
     rnum operator*(rnum const& x){
         rnum res = 0;
         vector<term> a = vectorise(x),b = vectorise();
