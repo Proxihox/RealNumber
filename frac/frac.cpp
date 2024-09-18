@@ -207,11 +207,3 @@ frac pow(frac x,ll y){
     res.denom = pow(x.denom,y);
     return res;
 }
-
-int main(){
-    frac s1(1,3); // Initialises a fraction 1/3
-    s1 = pow(s1,5);
-    double s3 = 1.0/243;
-    cout << (s1 == s3) << "\n"; // Should output true i.e 1
-
-}
