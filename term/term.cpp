@@ -76,6 +76,14 @@ class term{
             x.second.out();
         }
     }
+    void out(){
+        cout << r << "*(\n"; 
+        fa(x,irr){
+            cout << "(" << x.first << ")" << "^";
+            x.second.out();
+        }
+        cout << ")\n";
+    }
     void consolidate(){ // push everything into irr part
         unordered_map<ll,ll> ps = primes(r);
         fa(x,ps){

@@ -32,6 +32,12 @@ void test_pow(){
     if(a != c) cout << "Power failed\n";
 }
 
+void test_pow2(){
+    term c = 4;
+    c = pow(c,HALF);
+    if(c != 2) cout << "Power2 failed\n";
+}
+
 void test_mul1(){
     term a = 5;
     term b = pow(a,HALF);
@@ -48,11 +54,19 @@ void test_mul2(){
     if(c != (a*b)) cout << "Mul2 failed\n";
 }
 
+void test_out(){
+    term a = 24;
+    a = pow(a,HALF);
+    a.out();
+}
+
 void (*tests[])() = {
     test_assign,
     test_pow,
+    test_pow2,
     test_mul1,
     test_mul2,
+    test_out,
     //test_sub
 };
 
