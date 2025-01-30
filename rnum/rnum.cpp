@@ -51,13 +51,14 @@ class rnum{
         terms[term(a.irr)] = a.r;
     }
 
-    void desc(){
-        vector<term> b = vectorise();
-        bool f = 0;
-        fa(i,b){
-            i.desc();
+    friend ostream& operator<<(ostream& os, rnum const& num){
+        fa(x,num.terms){
+            os << x.second << "(";
+            os << x.first;
+            os << ")";  
+            cout << "+";
         }
-        cout << "end\n";
+        return os;
     }
 
     vector<term> vectorise(){
@@ -84,17 +85,10 @@ class rnum{
     }
 
     rnum operator+(rnum const& x){
-        cout << "called\n";
         rnum res = x;
-        desc();
-        res.desc();
         fa(i,terms){
             res.terms[i.first] += i.second;
-            // term t = i.first;
-            // t.desc();
-            // cout  << " " << i.second << "\n";
         }
-        res.desc();
         return res;
     }
     rnum operator-(rnum const& x){

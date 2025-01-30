@@ -15,9 +15,6 @@
 #define fa(i,v) for(auto &i:v)
 using namespace std;
 
-
-
-
 class term{
     
     private:
@@ -68,14 +65,7 @@ class term{
         irr = x;
         r = 1;
     }
-    void desc(){
-        cout << "Rational :" << r << "\n";
-        cout << "Irr :\n";
-        fa(x,irr){
-            cout << x.first << "^";
-            x.second.out();
-        }
-    }
+
     void consolidate(){ // push everything into irr part
         unordered_map<ll,ll> ps = primes(r);
         fa(x,ps){
@@ -83,20 +73,17 @@ class term{
         }
         r = 1;
     }
-    void reduce(){
+    void reduce(){ // opposite of consolidate
         fa(x,irr){
-            // cout << "!";
-            // x.second.out();
-            // cout << (int) x.second << "\n";
-            //x.second.fractional().out();
             if(x.second > 1){
                 r *= pow(x.first,(int) (x.second));
                 irr[x.first] = (x.second.fractional());
             }
         }
+        irr.erase(1);
     }
 
-    double deciform() const {
+    double deciform() const { //convert to decimal form
         if(irr.size() != 0){
             double z = 0;
             fa(x,irr){
@@ -105,6 +92,25 @@ class term{
             return z*r;
         }
         else return r;
+    }
+    void desc(){
+        cout << "Rational :" << r << "\n";
+        cout << "Irr :\n";
+        fa(x,irr){
+            cout << x.first << "^";
+            cout << x.second << "\n";
+        }
+    }
+    friend ostream& operator<<(ostream& os, term const& num){
+        os << num.r << "[";
+        fa(x,num.irr){
+            os << x.first << "^";
+            cout << "(";
+            os << x.second;
+            cout << ")";
+        }
+        os << "]";
+        return os;
     }
     void print(){
         cout << deciform() << "\n";

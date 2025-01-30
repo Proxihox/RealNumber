@@ -34,9 +34,6 @@ class frac{
 	}
 
 	
-	void out(){
-		cout << numer << "/" << denom << "\n";
-	}
 	friend ostream& operator<<(ostream& os, const frac& obj) {
         os << obj.numer << "/" << obj.denom;
         return os;

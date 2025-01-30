@@ -17,41 +17,45 @@
 using namespace std;
 
 void test_assign(){
-    rnum a(2);
+    term rt2 = pow(2,HALF);
+    rnum a(rt2);
     rnum b(5);
     a = b;
-    if(a != b) cout << "Assign failed";
+    if(a != b) cout << "Assign failed\n";
+    else cout << "Assign passed\n";
+}
+
+void test_cout(){
+    term rt2 = pow(frac(2),HALF);
+    rnum a(rt2);
+    ostream& os = ;
+    os << a << "\n";
+    cout << a << "\n";
 }
 
 void test_add(){
     rnum a(2);
-    rnum b(2);
+    rnum b(8);
     frac d(1,2);
-    a = pow(a,d);
-    b = (b + a);
-    b.desc();
-    cout << "\n";
-    // b = b*a;
-    // b.desc();
-    // a = a + 1;
-    // a = a*2;
-    // a.desc();
-    // cout << "\n";
-    // b.desc();
-    // cout << "\n";
+    a = pow(a,d); // root2
+    b = pow(b,d);
+    cout << "b" << b << "\n";
+    b = b + 2;
+    a = a + 1;
+    a = a*2;
     cout << (a == b) << "\n";
+    if(a != b) cout << "Add failed\n";
+    
 }
 
 void (*tests[])() = {
     test_assign,
+    test_cout,
     test_add,
-    //test_sub
 };
 
 int main(){
-    bool res = true;
     fa(x,tests){
         x();
     }
-    if(res) cout << "Passed";
 }

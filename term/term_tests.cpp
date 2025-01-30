@@ -24,6 +24,14 @@ void test_assign(){
     if(a != b) cout << "Assign Failed\n";
 }
 
+void test_cout(){
+    term a = pow(frac(24),HALF);
+    term rt2 = pow(frac(2),HALF);
+    term rt3 = pow(frac(3),HALF);
+    cout << rt2 << " " << rt3 << "\n";
+    cout << a << "\n";
+}
+
 void test_pow(){
     term c = 125;
     c = pow(c,HALF);
@@ -49,11 +57,11 @@ void test_mul2(){
 }
 
 void (*tests[])() = {
+    test_cout,
     test_assign,
     test_pow,
     test_mul1,
     test_mul2,
-    //test_sub
 };
 
 int main(){
