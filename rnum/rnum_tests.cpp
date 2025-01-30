@@ -34,6 +34,7 @@ void test_cout(){
 }
 
 void test_add(){
+    
     rnum a(2);
     rnum b(8);
     frac d(1,2);
@@ -47,6 +48,7 @@ void test_add(){
     if(a != b) cout << "Add failed\n";
     
 }
+
 
 void (*tests[])() = {
     test_assign,

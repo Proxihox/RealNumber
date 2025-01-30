@@ -63,15 +63,12 @@ class rnum{
 
     vector<term> vectorise(){
         vector<term> res;
+        cout << "Vector size: " << terms.size() << "\n";
         fa(x,terms){
-            res.push_back(term(x.first)*x.second);
-        }
-        return res;
-    }
-    vector<term> vectorise(rnum num){
-        vector<term> res;
-        fa(x,num.terms){
-            res.push_back(term(x.first)*x.second);
+            // cout << "loopy\n";
+            // term(x.first).out();
+            term t = term(x.first);
+            res.push_back(t*x.second);
         }
         return res;
     }
@@ -106,9 +103,9 @@ class rnum{
         return *this;
     }
 
-    rnum operator*(rnum const& x){
+    rnum operator*(rnum x){
         rnum res = 0;
-        vector<term> a = vectorise(x),b = vectorise();
+        vector<term> a = x.vectorise(),b = vectorise();
         fa(i,a){
             fa(j,b){
                 term k = i*j;
@@ -118,9 +115,9 @@ class rnum{
         return res;
     }
 
-    rnum operator*=(rnum const& x){
+    rnum operator*=(rnum x){
         rnum res = *this;
-        vector<term> a = vectorise(x),b = vectorise();
+        vector<term> a = x.vectorise(),b = vectorise();
         fa(i,a){
             fa(j,b){
                 term k = i*j;
@@ -134,7 +131,7 @@ class rnum{
 
     rnum operator/(term const& x){
         rnum res = 0;
-        vector<term> a = vectorise(x),b = vectorise();
+        vector<term> a = {x},b = vectorise();
         fa(i,a){
             fa(j,b){
                 term k = i*j;
@@ -168,10 +165,12 @@ class rnum{
 };
 
 rnum pow(rnum a,frac b){
-    vector<term> f = a.vectorise(a);
+    cout << "Started power\n";
+    vector<term> f = a.vectorise();
     rnum res;
     fa(i,f){
         term k = pow(i,b);
+        k.out();
         res.terms[term(k.irr)] += k.r;
     }
     return res;
