@@ -28,8 +28,6 @@ void test_assign(){
 void test_cout(){
     term rt2 = pow(frac(2),HALF);
     rnum a(rt2);
-    ostream& os = ;
-    os << a << "\n";
     cout << a << "\n";
 }
 
@@ -40,12 +38,12 @@ void test_add(){
     frac d(1,2);
     a = pow(a,d); // root2
     b = pow(b,d);
-    cout << "b" << b << "\n";
+    //cout << "b" << b << "\n";
     b = b + 2;
     a = a + 1;
     a = a*2;
-    cout << (a == b) << "\n";
     if(a != b) cout << "Add failed\n";
+    else cout << "Add passed\n";
     
 }
 

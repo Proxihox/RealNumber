@@ -63,7 +63,7 @@ class rnum{
 
     vector<term> vectorise(){
         vector<term> res;
-        cout << "Vector size: " << terms.size() << "\n";
+        //cout << "Vector size: " << terms.size() << "\n";
         fa(x,terms){
             // cout << "loopy\n";
             // term(x.first).out();
@@ -165,12 +165,12 @@ class rnum{
 };
 
 rnum pow(rnum a,frac b){
-    cout << "Started power\n";
+    //cout << "Started power\n";
     vector<term> f = a.vectorise();
     rnum res;
     fa(i,f){
         term k = pow(i,b);
-        k.out();
+        //cout << k << "\n";
         res.terms[term(k.irr)] += k.r;
     }
     return res;
